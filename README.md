@@ -1,8 +1,19 @@
-zhaohaochendeMacBook-Pro:dubbo_factory zhaohaochen$ node ./index -h
+---
+title: dubbo_factory
+tags: dubbo,java,spring mvc
+grammar_cjkRuby: true
+---
 
-  Usage: index [options]
 
-  Options:
+通过mysql数据库表结构，生成dubbo的项目结构
+
+ - dubbo_facade
+ -  dubbo_service
+ - dubbo_api
+ - common
+ - pom_parent
+
+  参数:
 
     -h, --help                    output usage information
     -V, --version                 output the version number
@@ -15,4 +26,3 @@ zhaohaochendeMacBook-Pro:dubbo_factory zhaohaochen$ node ./index -h
     -a, --mysql_password <value>  mysql参数:password
     -d, --mysql_database <value>  mysql参数:database
     -s, --src <value>             存储路径
-
