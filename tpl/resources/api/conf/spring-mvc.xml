@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.1.xsd
+	http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+    
+	<context:annotation-config />
+	<!-- 扫描控制器类，这里只加载controller层 -->
+	<!-- 因为spring的context是父子容器，所以会产生冲突，由ServletContextListener产生的是父容器，
+			springMVC产生的是子容器，子容器Controller进行扫描装配时装配了@Service注解的实例，
+			而该实例理应由父容器进行初始化以保证事务的增强处理，所以此时得到的将是原样的Service
+			（没有经过事务加强处理，故而没有事务处理能力)。 -->
+	<context:component-scan base-package="{{groupid}}.{{name}}_api">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+	</context:component-scan> 
+	
+	<!-- 采用注解方式配置MVC -->
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
+		<mvc:message-converters>
+			<ref bean="jacksonMessageConverter"/>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+		<property name="favorPathExtension" value="true" />
+		<!-- 用于开启 /userinfo/123?format=json 的支持 -->
+		<property name="favorParameter" value="true" />
+		<!-- 是否忽略Accept Header -->
+        <property name="ignoreAcceptHeader" value= "false"/>
+        <!-- 默认的content type -->
+		<property name="defaultContentType" value="text/html" />
+		<!--扩展名到MIME的映射；favorPathExtension, favorParameter是true时起作用  --> 
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="html" value="text/html" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 避免IE在ajax请求时，返回json出现下载 -->
+	<bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">     
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+        <property name="objectMapper">  
+        	<bean class="{{groupid}}.common.CustomerObjectMapper"></bean>
+    	</property> 
+        
+    </bean>
+    <!--配置拦截器, 多个拦截器,顺序执行 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+			<mvc:mapping path="/api/**" />
+			<bean class="{{groupid}}.{{name}}_api.filter.LoginInterceptor"></bean>
+		</mvc:interceptor>
+		<!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+	</mvc:interceptors>
+</beans>
+	
+	
