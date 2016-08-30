@@ -1,7 +1,5 @@
 ---
-title: dubbo_factory
-tags: dubbo,java,spring mvc
-grammar_cjkRuby: true
+dubbo_factory
 ---
 
 
@@ -13,9 +11,12 @@ grammar_cjkRuby: true
  - common
  - pom_parent
 
-  参数:
 
-    -h, --help                    output usage information
+----------
+
+
+  **参数:**
+
     -V, --version                 output the version number
     -g, --groupid <n>             groupId
     -n, --name <n>                项目名称
