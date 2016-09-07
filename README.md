@@ -1,7 +1,7 @@
 项目结构说明
 ===================
 ## common
-![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/1.png)
+![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/1.png)
 #### 说明
 ```
 /common                       通用工具
@@ -10,13 +10,13 @@
 /resources/conf/ehcache.xml     ehcache配置文件
 ```
 ## pom-parent
- ![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/2.png)
+ ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/2.png)
 #### 说明：
 ```
 / pom.xml                       通用pom文件
 ```
 ## snake-api
- ![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/3.png)
+ ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/3.png)
 #### 说明：
 ```
 /common/SnakeSystem.java              全局系统文件
@@ -27,14 +27,14 @@
 /resources/conf/dubbo-consumer.xml    dubbo 消费者配置文件
 ```
 ## snake-facade
- ![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/4.png)
+ ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/4.png)
 #### 说明：
 ```
 /model                                 数据库实体类
 /service                                service 接口定义
 ```
 ## snake-service
- ![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/5.png)
+ ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/5.png)
 #### 说明：
 ```
 /mapper                              mybatis 用的mappe映射类
@@ -61,10 +61,10 @@ Api：服务消费者，封装service服务提供可被调用的restful接口层
 ## 调试说明
 调用自己的本机消费者服务，需要两步骤：
 >第一步：本机提供者服务不想Zookeeper注册服务（这样做使得他人条用不了自己的本机服务）
-![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/6.png)
+![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/6.png)
 
 >第二步：在消费者服务指定条用本地服务（直连调试）
-![alt](https://coding.net/u/aaassaadd/p/dubbo_factory/git/raw/master/public/7.png)
+![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/7.png)
 
 
 项目调试／打包
