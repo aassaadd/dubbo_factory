@@ -15,7 +15,7 @@
 ```
 / pom.xml                       通用pom文件
 ```
-## snake-api
+## xxxx-api
  ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/3.png)
 #### 说明：
 ```
@@ -26,14 +26,14 @@
 /restful                                 restfulController类
 /resources/conf/dubbo-consumer.xml    dubbo 消费者配置文件
 ```
-## snake-facade
+## xxxx-facade
  ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/4.png)
 #### 说明：
 ```
 /model                                 数据库实体类
 /service                                service 接口定义
 ```
-## snake-service
+## xxxx-service
  ![alt](https://raw.githubusercontent.com/aassaadd/dubbo_factory/master/public/5.png)
 #### 说明：
 ```
