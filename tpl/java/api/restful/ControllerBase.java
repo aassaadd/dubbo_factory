@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import {{groupid}}.{{name}}_facade.model.{{classname}};
 import {{groupid}}.{{name}}_facade.service.{{classname}}Service;
-import {{groupid}}.shop_api.common.MytSystem;
+import {{groupid}}.{{name}}_api.common.{{tf2 name}}System;
 
 @RestController
 @RequestMapping(value = "/api/v1/{{tf entity}}")
@@ -29,7 +29,7 @@ public {{classname}}Controller() {
 @RequestMapping(value = "", method = RequestMethod.POST)
 public Map<String, Object> add(
 @RequestBody {{classname}} {{tf entity}}) {
-		Integer currentUserId = (Integer) MytSystem.getCurrentUserId();
+		Integer currentUserId = (Integer) {{tf2 name}}System.getCurrentUserId();
 		{{tf entity}}.setCreateId(currentUserId);
 		{{tf entity}}.setOptId(currentUserId);
 		try {
@@ -46,7 +46,7 @@ public Map<String, Object> add(
 @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 public Map<String, Object> update(@PathVariable(value = "id") Integer id,
 @RequestBody {{classname}} {{tf entity}}) {
-		Integer currentUserId = (Integer) MytSystem.getCurrentUserId();
+		Integer currentUserId = (Integer) {{tf2 name}}System.getCurrentUserId();
 		{{tf entity}}.setOptId(currentUserId);
 		{{tf entity}}.setId(id);
 		try {
@@ -62,7 +62,7 @@ public Map<String, Object> update(@PathVariable(value = "id") Integer id,
 
 @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 public Map<String, Object> delete(@PathVariable(value = "id") Integer id) {
-		Integer currentUserId = (Integer) MytSystem.getCurrentUserId();
+		Integer currentUserId = (Integer) {{tf2 name}}System.getCurrentUserId();
 		{{classname}} {{tf entity}} = new {{classname}}();
 		{{tf entity}}.setId(id);
 		{{tf entity}}.setOptId(currentUserId);

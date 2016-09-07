@@ -7,6 +7,10 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
+/**
+ * 分页返回结果范型
+ * @param <T>
+ */
 public  class   ReturnPage<T> implements Serializable{
 
 	/**

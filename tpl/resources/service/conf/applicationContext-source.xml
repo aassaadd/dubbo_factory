@@ -85,7 +85,7 @@
   </property>
 	</bean>
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.xihui.b2c.shop_service.mapper" />
+		<property name="basePackage" value="{{groupid}}.{{name}}_service.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 </beans>

@@ -15,6 +15,9 @@ import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
+/**
+ * mybatis 自动生成分页工具插件
+ */
 public class PaginationPlugin extends PluginAdapter{
 
 	@Override

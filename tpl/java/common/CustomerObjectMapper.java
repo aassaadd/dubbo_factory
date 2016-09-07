@@ -9,6 +9,9 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
+/**
+ * ie用json转换
+ */
 public class CustomerObjectMapper extends ObjectMapper {
 
 	private static final long serialVersionUID = 3358385859308893955L;

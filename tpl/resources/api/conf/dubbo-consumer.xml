@@ -17,4 +17,6 @@
 		interface="{{groupid}}.{{name}}_facade.service.{{classname}}Service"
 		id="{{tf entity}}Service" check="false" />
 	{{/each}}
+	<dubbo:reference interface="{{groupid}}.{{name}}_facade.service.LoginService"
+					 id="loginService" check="false" />
 </beans>  

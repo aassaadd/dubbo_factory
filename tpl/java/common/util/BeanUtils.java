@@ -5,6 +5,9 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * javaBean工具
+ */
 public class BeanUtils {
 
 	/**

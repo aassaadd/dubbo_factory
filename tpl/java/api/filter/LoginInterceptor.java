@@ -12,12 +12,12 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import {{groupid}}.common.ErrorResult;
-import {{groupid}}.{{name}}_api.common.{{name}}System;
+import {{groupid}}.{{name}}_api.common.{{tf2 name}}System;
 import {{groupid}}.{{name}}_facade.service.LoginService;
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	private final Logger log = LoggerFactory.getLogger(LoginInterceptor.class);  
 	@Autowired
-	private LoginService userLoginService;
+	private LoginService loginService;
     /* 
      * 利用正则映射到需要拦截的路径     
       
@@ -48,7 +48,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		}
 	
 		if (StringUtils.isEmpty(token)
-				|| userLoginService.getUserForToken(token) == null) {
+				|| loginService.getUserForToken(token) == null) {
 			ObjectMapper objectMapper = new ObjectMapper();
 			// 校验失败.
 			response.setContentType("text/html");
@@ -58,9 +58,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 							.setMsg("未登录")));
 			  return false;  
 		}else{
-			Integer currentUserId = Integer.parseInt(userLoginService.getUserForToken(token).get("id").toString());
+			Integer currentUserId = Integer.parseInt(loginService.getUserForToken(token).get("id").toString());
 			// 为当前线程设置当前操作用户.
-			B2cSystem.CURRENT_USER_ID_THREADLOCAL.set(currentUserId);
+			{{tf2 name}}System.CURRENT_USER_ID_THREADLOCAL.set(currentUserId);
 			  return true;     
 		}
     }    

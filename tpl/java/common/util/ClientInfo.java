@@ -7,6 +7,9 @@ import nl.bitwalker.useragentutils.Browser;
 import nl.bitwalker.useragentutils.OperatingSystem;
 import nl.bitwalker.useragentutils.UserAgent;
 
+/**
+ * 浏览器Info工具
+ */
 public class ClientInfo {
 
     UserAgent userAgent ;

@@ -33,6 +33,9 @@ import org.apache.http.util.EntityUtils;
 
 import com.alibaba.fastjson.JSON;
 
+/**
+ * HttpRequest 工具
+ */
 public class HttpRequestUtil {
 
 	/**

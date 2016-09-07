@@ -6,6 +6,9 @@
 
 package {{groupid}}.common.util;
 
+/**
+ * Base64 工具
+ */
 public final class Base64Utils {
 
     static private final int     BASELENGTH           = 128;

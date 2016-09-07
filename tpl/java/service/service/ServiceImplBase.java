@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.entity.Example.Criteria;
-import com.xihui.b2c.common.util.BeanUtils;
+import {{groupid}}.common.util.BeanUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import {{groupid}}.common.ReturnPage;

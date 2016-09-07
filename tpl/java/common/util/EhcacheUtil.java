@@ -10,6 +10,9 @@ import net.sf.ehcache.CacheException;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+/**
+ * Ehcache工具
+ */
 public class EhcacheUtil {
 	
 //	private static Logger logger = LoggerFactory.getLogger(EhcacheUtil.class);

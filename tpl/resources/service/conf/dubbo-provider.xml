@@ -19,4 +19,6 @@
 	<dubbo:service interface="{{groupid}}.{{name}}_facade.service.{{classname}}Service"
 		ref="{{tf entity}}Service" />
 	{{/each}}
+	<dubbo:service interface="{{groupid}}.{{name}}_facade.service.LoginService"
+				   ref="loginService" />
 </beans>  

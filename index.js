@@ -27,6 +27,7 @@ program
     .option('-a, --mysql_password <value>', 'mysql参数:password', setString,'root')
     .option('-d, --mysql_database <value>', 'mysql参数:database', setString,'myapp')
     .option('-s, --src <value>', '存储路径', setString,'./tmp')
+    .option('-b, --bean <value>', '用户类', setString,'MyUser')
     .parse(process.argv);
 
 console.log(' groupId: %j', program.groupid);
@@ -38,6 +39,7 @@ console.log(' mysql参数:user: %j', program.mysql_user);
 console.log(' mysql参数:password: %j', program.mysql_password);
 console.log(' mysql参数:database: %j', program.mysql_database);
 console.log(' 存储路径: %j', program.src);
+console.log(' 用户类: %j', program.bean);
 console.log(' args: %j', program.args);
 
 //2.创建项目目录

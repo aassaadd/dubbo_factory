@@ -1,5 +1,8 @@
 package {{groupid}}.common;
 
+/**
+ * 返回结果
+ */
 public abstract class Result {
 	private String msg;
 
