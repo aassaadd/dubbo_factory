@@ -58,7 +58,7 @@ Api：服务消费者，封装service服务提供可被调用的restful接口层
 ## 如何开发
 ### service开发
 
->1.先在facade中定义interface
+> 1.先在facade中定义interface
 
 ```
 public interface MyWxUserService extends BaseService<MyWxUser> {
@@ -66,7 +66,9 @@ public interface MyWxUserService extends BaseService<MyWxUser> {
 }
 
 ```
->2.在service中开发interface实现
+
+> 2.在service中开发interface实现
+
 ```
 @Service("myWxUserService")
 public class MyWxUserServiceImpl implements MyWxUserService {
@@ -145,20 +147,22 @@ public class MyWxUserServiceImpl implements MyWxUserService {
 }
 ```
 
->3.在service的dubbo-provider中暴露服务
+> 3.在service的dubbo-provider中暴露服务
+
 ```
 	<dubbo:service interface="com.snake.snake_facade.service.LoginService"
 		ref="loginService" />
 ```
 
 ### api开发
->1.注入dubbo服务
+> 1.注入dubbo服务
 
 ```
 	<dubbo:reference interface="com.snake.snake_facade.service.LoginService"
 		id="loginService" check="false" />
 ```
->2.实现restfulcontroller
+
+> 2.实现restfulcontroller
 
 ```
 @RestController
@@ -243,6 +247,7 @@ public class MyWxUserController extends BaseController {
 	}
 }
 ```
+
 ```
 SnakeSystem.getCurrentUserId()                                 活的当前登陆用户
 getReturnMapFailure()/getReturnMapFailure(xxx)                 错误返回
