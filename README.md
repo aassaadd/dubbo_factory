@@ -55,6 +55,201 @@ façade：暴露接口，需要暴露给服务消费者使用的接口和实体�
 Service：服务提供者
 Api：服务消费者，封装service服务提供可被调用的restful接口层，默认封装简单的token接口验证服务
 ```
+## 如何开发
+### service开发
+
+>1.先在facade中定义interface
+
+```
+public interface MyWxUserService extends BaseService<MyWxUser> {
+	
+}
+
+```
+>2.在service中开发interface实现
+```
+@Service("myWxUserService")
+public class MyWxUserServiceImpl implements MyWxUserService {
+
+	@Autowired
+	private MyWxUserMapper mapper;
+
+	public MyWxUser add(MyWxUser t) {
+		// TODO Auto-generated method stub
+		Long d = System.currentTimeMillis();
+		mapper.insertSelective(t);
+		return t;
+	}
+
+	public MyWxUser delete(MyWxUser t) {
+		// TODO Auto-generated method stub
+		Long d = System.currentTimeMillis();
+		mapper.updateByPrimaryKeySelective(t);
+		return t;
+	}
+
+	public MyWxUser update(MyWxUser t) {
+		// TODO Auto-generated method stub
+		Long d = System.currentTimeMillis();
+		mapper.updateByPrimaryKeySelective(t);
+		return t;
+	}
+
+	public MyWxUser getById(int id) {
+		// TODO Auto-generated method stub
+		MyWxUser t = new MyWxUser();
+		t.setId(id);
+		return mapper.selectOne(t);
+	}
+
+	public ReturnPage<MyWxUser> getByPage(Long pageNumber, Long pageSize,
+			Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		PageHelper.startPage(pageNumber.intValue(), pageSize.intValue());
+		List<MyWxUser> list = getByList(params);
+		PageInfo<MyWxUser> page = new PageInfo<MyWxUser>(list);
+		return new ReturnPage<MyWxUser>(page.getTotal(), pageNumber, pageSize,
+				list);
+	}
+
+	public List<MyWxUser> getByList(Map<String, Object> params) {
+		// TODO Auto-generated method stub
+		Map<String, Class<?>> returnType = BeanUtils
+				.getBeanMethodsReturnType(MyWxUser.class);
+		Example example = new Example(MyWxUser.class);
+		//
+		Criteria or = example.or();
+		for (String key : params.keySet()) {
+			if (key.indexOf("_like") > -1) {
+				or.andLike(key.substring(0, key.indexOf("_like")),
+						"%" + params.get(key) + "%");
+			}
+			if (!key.equals("pageSize") && !key.equals("page")
+					&& !params.get(key).equals("") && key.indexOf("_in") < 0
+					&& key.indexOf("_like") < 0) {
+				if (returnType.containsKey(key)) {
+					or.andEqualTo(key, returnType.get(key)
+							.cast(params.get(key)));
+				} else {
+					or.andEqualTo(key, params.get(key));
+				}
+			}
+
+		}
+//		or.andEqualTo("deleted", 0);
+//		example.setOrderByClause("create_date DESC");
+		return mapper.selectByExample(example);
+	}
+
+
+}
+```
+
+>3.在service的dubbo-provider中暴露服务
+```
+	<dubbo:service interface="com.snake.snake_facade.service.LoginService"
+		ref="loginService" />
+```
+
+### api开发
+>1.注入dubbo服务
+```
+	<dubbo:reference interface="com.snake.snake_facade.service.LoginService"
+		id="loginService" check="false" />
+```
+>2.实现restfulcontroller
+```
+@RestController
+@RequestMapping(value = "/api/v1/myWxUser")
+public class MyWxUserController extends BaseController {
+
+	@Autowired
+	private MyWxUserService myWxUserService;
+
+	public MyWxUserController() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public Map<String, Object> add(@RequestBody MyWxUser myWxUser) {
+		Integer currentUserId = (Integer) SnakeSystem.getCurrentUserId();
+		try {
+			myWxUser = myWxUserService.add(myWxUser);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return getReturnMapFailure();
+		}
+		return getReturnMapSuccess(myWxUser);
+
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public Map<String, Object> update(@PathVariable(value = "id") Integer id,
+			@RequestBody MyWxUser myWxUser) {
+		Integer currentUserId = (Integer) SnakeSystem.getCurrentUserId();
+		myWxUser.setId(id);
+		try {
+			myWxUser = myWxUserService.update(myWxUser);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return getReturnMapFailure();
+		}
+		return getReturnMapSuccess(myWxUser);
+
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public Map<String, Object> delete(@PathVariable(value = "id") Integer id) {
+		Integer currentUserId = (Integer) SnakeSystem.getCurrentUserId();
+		MyWxUser myWxUser = new MyWxUser();
+		myWxUser.setId(id);
+		try {
+			myWxUser = myWxUserService.delete(myWxUser);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return getReturnMapFailure();
+		}
+		return getReturnMapSuccess(myWxUser);
+
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public Map<String, Object> getById(@PathVariable(value = "id") Integer id) {
+		MyWxUser myWxUser = myWxUserService.getById(id);
+
+		if (myWxUser == null) {
+			return getReturnMapFailure();
+		}
+		return getReturnMapSuccess(myWxUser);
+
+	}
+
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public Map<String, Object> getByPage(HttpServletRequest request) {
+		Map<String, Object> params = getParameterMap(request);
+		if (!params.containsKey("page")) {
+			return getReturnMapSuccess(myWxUserService.getByList(params));
+		}
+		Long pageNumber = Long.parseLong((String) params.get("page"));
+		Long pageSize = Long.parseLong((String) params.get("pageSize"));
+		return getReturnMapSuccess(myWxUserService.getByPage(pageNumber,
+				pageSize, params));
+
+	}
+}
+```
+```
+SnakeSystem.getCurrentUserId()                                 活的当前登陆用户
+getReturnMapFailure()/getReturnMapFailure(xxx)                 错误返回
+getReturnMapSuccess(xxx)                                       成功返回
+Map<String, Object> params = getParameterMap(request)          获得当前问号参数
+```
+
+
+
 ## MyBatis Example类使用说明:
 [MyBatis Example类使用说明](http://mbg.cndocs.tk/generatedobjects/exampleClassUsage.html)
 
