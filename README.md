@@ -153,11 +153,13 @@ public class MyWxUserServiceImpl implements MyWxUserService {
 
 ### api开发
 >1.注入dubbo服务
+
 ```
 	<dubbo:reference interface="com.snake.snake_facade.service.LoginService"
 		id="loginService" check="false" />
 ```
 >2.实现restfulcontroller
+
 ```
 @RestController
 @RequestMapping(value = "/api/v1/myWxUser")
