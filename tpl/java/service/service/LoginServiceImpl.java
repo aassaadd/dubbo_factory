@@ -49,7 +49,7 @@ public class LoginServiceImpl implements LoginService {
 			if (!MD5Util.getMD5Lower(userPassword).equals(user.getPassword())) {
 				return null;
 			}
-			String token = tokenManager.createToken(user.getId()).getToken();
+			String token = user.getId()+'_'+tokenManager.createToken(user.getId()).getToken();
 			Map<String, Object> rmap = BeanUtils.Bean2Map(user);
 			rmap.put("token", token);
 			rmap.remove("password");
