@@ -1,5 +1,9 @@
 快速使用
 ===================
+> 执行命令
+```
+node ./index -g com.snake -n snake -d snake -s /Users/zhaohaochen/git/dubbo_factory -b MyWxUser
+```
 > 参数:
 ```
 -h, --help                    output usage information
