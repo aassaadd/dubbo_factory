@@ -1,0 +1,14 @@
+{
+  "name": "{{name}} api doc",
+  "version": "1.0.0",
+  "description": "{{name}} api doc",
+  "url" : "https://localhost:8080/{{name}}/api/v1",
+  "sampleUrl":"http://localhost:8080/{{name}}/api/v1",
+  "template":{
+    "jQueryAjaxSetup":{
+      "contentType" : "application/json;charset=UTF-8",
+      "dataType":"json"
+    }
+  }
+
+}
