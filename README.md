@@ -27,6 +27,10 @@ node ./index -g com.snake -n snake -d snake -s /Users/zhaohaochen/git/dubbo_fact
  - common
  - pom_parent
 
+## MyBatis Example类使用说明:
+[MyBatis Example类使用说明](http://mbg.cndocs.tk/generatedobjects/exampleClassUsage.html)
+
+
 ## 调试说明
 调用自己的本机消费者服务，需要两步骤：
 >第一步：本机提供者服务不想Zookeeper注册服务（这样做使得他人条用不了自己的本机服务）
@@ -317,7 +321,4 @@ Map<String, Object> params = getParameterMap(request)          获得当前问�
 ```
 
 
-
-## MyBatis Example类使用说明:
-[MyBatis Example类使用说明](http://mbg.cndocs.tk/generatedobjects/exampleClassUsage.html)
 
