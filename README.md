@@ -3,7 +3,7 @@
 > 执行命令
 ```
 npm install
-node ./index -g com.snake -n snake -d snake -s /Users/zhaohaochen/git/dubbo_factory -b MyWxUser
+node ./index -g com.snake -n snake -d snake -s ./ -b MyWxUser
 ```
 > 参数:
 ```
