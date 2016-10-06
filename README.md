@@ -2,6 +2,7 @@
 ===================
 > 执行命令
 ```
+npm install
 node ./index -g com.snake -n snake -d snake -s /Users/zhaohaochen/git/dubbo_factory -b MyWxUser
 ```
 > 参数:
@@ -19,7 +20,7 @@ node ./index -g com.snake -n snake -d snake -s /Users/zhaohaochen/git/dubbo_fact
 -s, --src <value>             存储路径
 -b, --bean <value>            用户类
 ```
-
+注：数据库端口号必须是3306
 #### 通过mysql数据库表结构，生成dubbo的项目结构
  - dubbo_facade
  - dubbo_service
