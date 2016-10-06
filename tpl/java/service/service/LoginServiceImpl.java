@@ -14,10 +14,10 @@ import {{groupid}}.common.util.BeanUtils;
 import {{groupid}}.common.util.EhcacheUtil;
 import {{groupid}}.common.util.MD5Util;
 import {{groupid}}.common.util.UUIDUtil;
-import {{groupid}}.{{name}}_facade.model.User;
-import {{groupid}}.{{name}}_facade.service.UserService;
+import {{groupid}}.{{name}}_facade.model.{{bean}};
+import {{groupid}}.{{name}}_facade.service.{{bean}}Service;
 import {{groupid}}.{{name}}_facade.service.LoginService;
-import {{groupid}}.{{name}}_service.mapper.UserMapper;
+import {{groupid}}.{{name}}_service.mapper.{{bean}}Mapper;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
