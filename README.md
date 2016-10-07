@@ -20,7 +20,7 @@ node ./index -g com.snake -n snake -d snake -s ./ -b MyWxUser
 -s, --src <value>             存储路径
 -b, --bean <value>            用户类
 ```
-注：数据库端口号必须是3306
+注：数据库端口号必须是3306,执行成功后[dist.zip](dist.zip)和[doc.zip](doc.zip)两个压缩包，分别是maven源码和apidoc网页api说明。
 #### 通过mysql数据库表结构，生成dubbo的项目结构
  - dubbo_facade
  - dubbo_service
