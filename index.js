@@ -22,6 +22,7 @@ program
     .option('-n, --name <n>', '项目名称', setString,'myapp')
     .option('-p, --parent <value>', '是否需要通用pom', parseInt,1)
     .option('-c, --common <value>', '是否需要通用common', parseInt,1)
+    .option('-i, --apidoc <value>', '是否需要apidoc', parseInt,0)
     .option('-o, --mysql_host <value>', 'mysql参数:host', setString,'localhost')
     .option('-u, --mysql_user <value>', 'mysql参数:user', setString,'root')
     .option('-a, --mysql_password <value>', 'mysql参数:password', setString,'root')
@@ -34,6 +35,7 @@ console.log(' groupId: %j', program.groupid);
 console.log(' name: %j', program.name);
 console.log(' parent: %j', program.parent);
 console.log(' common: %j', program.common);
+console.log(' apidoc: %j', program.apidoc);
 console.log(' mysql参数:host: %j', program.mysql_host);
 console.log(' mysql参数:user: %j', program.mysql_user);
 console.log(' mysql参数:password: %j', program.mysql_password);

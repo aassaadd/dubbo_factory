@@ -3,7 +3,7 @@
 > 执行命令
 ```
 npm install
-node ./index -g com.snake -n snake -d snake -s ./ -b MyWxUser
+node ./index -g com.snake -n snake -d snake -s ./ -b MyWxUser -i 1
 ```
 > 参数:
 ```
@@ -11,8 +11,9 @@ node ./index -g com.snake -n snake -d snake -s ./ -b MyWxUser
 -V, --version                 output the version number
 -g, --groupid <n>             groupId
 -n, --name <n>                项目名称
--p, --parent <value>          是否需要通用pom
--c, --common <value>          是否需要通用common
+-p, --parent <value>          是否需要通用pom,默认为1（1需要，0不需要）
+-c, --common <value>          是否需要通用common,默认为1（1需要，0不需要）
+-i, --apidoc <value>          是否需要apidoc，默认为0（1需要，0不需要）
 -o, --mysql_host <value>      mysql参数:host
 -u, --mysql_user <value>      mysql参数:user
 -a, --mysql_password <value>  mysql参数:password
