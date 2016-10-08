@@ -26,7 +26,10 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
 	</context:component-scan>
-
+	<context:component-scan base-package="{{groupid}}.{{name}}_service.token">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
+	</context:component-scan>
 	<!-- 导入其它spring配置文件 -->
 	<import resource="classpath:conf/applicationContext-source.xml" />
 	<import resource="classpath:conf/apllicationContext-redis.xml" />
