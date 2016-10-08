@@ -1,7 +1,7 @@
 package {{groupid}}.{{name}}_facade.model;
 
 import java.io.Serializable;
-
+import java.sql.*;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
