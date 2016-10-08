@@ -2,6 +2,7 @@ package {{groupid}}.{{name}}_facade.model;
 
 import java.io.Serializable;
 import java.sql.*;
+import java.math.*;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement

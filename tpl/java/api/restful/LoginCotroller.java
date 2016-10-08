@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.dubbo.common.utils.StringUtils;
-import {{groupid}}.{{name}}_facade.model.MyWxUser;
+import {{groupid}}.{{name}}_facade.model.{{bean}};
 import {{groupid}}.{{name}}_facade.service.LoginService;
 
 @RestController

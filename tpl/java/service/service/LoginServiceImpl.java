@@ -18,7 +18,8 @@ import {{groupid}}.{{name}}_facade.model.{{bean}};
 import {{groupid}}.{{name}}_facade.service.{{bean}}Service;
 import {{groupid}}.{{name}}_facade.service.LoginService;
 import {{groupid}}.{{name}}_service.mapper.{{bean}}Mapper;
-
+import {{groupid}}.{{name}}_service.token.TokenManager;
+import {{groupid}}.{{name}}_service.token.TokenModel;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
 
@@ -41,7 +42,7 @@ public class LoginServiceImpl implements LoginService {
 		map.put("enabled", 1);
 		map.put("deleted", 0);
 		// .andUserPasswordEqualTo(MD5Util.getMD5Lower(userPassword));
-		List<MyWxUser> list = {{tf bean}}Service.getByList(map);
+		List<{{bean}}> list = {{tf bean}}Service.getByList(map);
 		if (list.size() > 0) {
 			{{bean}} user = list.get(0);
 
