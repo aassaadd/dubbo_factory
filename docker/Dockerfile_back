@@ -1,0 +1,16 @@
+FROM java:7
+MAINTAINER zhc aassaadd@qq.com
+
+ENV MAVEN_VERSION  3.3.9
+ENV MAVEN_HOME /opt/maven
+
+#Install maven
+COPY apache-maven-3.3.9-bin.tar.gz /opt/
+RUN tar -xzf /opt/apache-maven-3.3.9-bin.tar.gz -C /opt && \
+    mv /opt/apache-maven-${MAVEN_VERSION} /opt/maven && \
+    ln -s /opt/maven/bin/mvn /usr/bin/mvn
+
+VOLUME /root/.m2
+#COPY settings.xml /opt/maven/conf/settings.xml
+#docker run -d -p 8080:8080 --name jenkins -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v /root/maven-tar:/root
+ 

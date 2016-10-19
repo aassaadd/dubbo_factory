@@ -1,0 +1,8 @@
+snake-service:
+    image: 'nickstenning/mediawiki'
+    ports:
+        - "8880:80"
+    links:
+        - db:database
+    volumes:
+        - /data/wiki2:/data
